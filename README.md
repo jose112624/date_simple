@@ -4,10 +4,21 @@
 
 ## Installation
 
+### Istallation if cloning this repo
 First, make sure you're in the same directory as setup.py.  Then from the Unix/Mac Terminal, or Windows Command Prompt :
 ```bash
+$ git clone https://github.com/jose112624120/date_simple.git
+$ cd date_simple
 $ pip install .            
 ```
+
+### Installation in one step
+```bash
+$ pip install git+https://github.com/jose112624120/date_simple.git
+```
+**Note**: if you can't run `pip` directly, then `pip` is not in your path, you can substitue `pip` with `python -m pip` to run `pip` as a module:
+
+![](install.png)
 
 ## Sample Usage
 
