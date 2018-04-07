@@ -41,14 +41,27 @@ def test_get_date_string():
     assert ds.get_date_string(date_object = dt.date.today()) ==  \
            str(dt.date.today()) 
 
-def test_get_date_string_format():
+def test_get_date_string_format_01():
     """Assert that if date_simple.get_date_string() is called with a supported
     format, it will return a date string in that format.
     """
-    for ds_format, dt_format in ds.get_supported_formats().items():
-        assert  ds.get_date_string(date_object = dt.date.today(), format = ds_format) == \
-                dt.datetime.combine(dt.date.today(), dt.time()).strftime(dt_format)
+    assert  ds.get_date_string(date_object = dt.date(2018,1,31), format = 'YYYY-MM-DD' ) == "2018-01-31"
 
+def test_get_date_string_format_02():
+    assert  ds.get_date_string(date_object = dt.date(2018,1,31), format = 'MM/DD/YYYY' ) == "01/31/2018"
+
+def test_get_date_string_format_03():
+    assert  ds.get_date_string(date_object = dt.date(2018,1,31), format = 'MM/DD/YY'   ) == "01/31/18"
+
+def test_get_date_string_format_04():
+    assert  ds.get_date_string(date_object = dt.date(2018,1,31), format = 'DD-Mon-YYYY' ) == "31-Jan-2018"  
+
+def test_get_date_string_format_05():
+    assert  ds.get_date_string(date_object = dt.date(2018,1,31), format = 'DD-Mon-YY' ) == "31-Jan-18"
+
+def test_get_date_string_format_06():
+    assert  ds.get_date_string(date_object = dt.date(2018,1,31), format = 'YYYYMMDD'  ) == "20180131"               
+                
 def test_get_date_string_type_error():
     """Assert that if date_simple.get_date_string() is called with an object
     that is not type datetime.date, it will raise a TypeError exception.
